@@ -10,9 +10,12 @@ import TerminalIcon from '@mui/icons-material/Terminal';
 import { IconButton } from '@mui/material';
 
 function App() {
+  // bg-gradient-to-r from-[#0D1B2A] to-[#1B263B]
   return (
     <>
-      <div className="min-h-screen bg-[#0D1B2A]">
+      <div className="min-h-screen" style={{
+        backgroundImage: "linear-gradient(90deg, #0D1B2A 0%, #0D1B2A 25%, #1B263B 25%, #1B263B 100%)",
+      }}>
         <div className="p-[15%]">
           <div className="grid gap-4 grid-cols-1 text-[#E0E1DD]">
             <div>
