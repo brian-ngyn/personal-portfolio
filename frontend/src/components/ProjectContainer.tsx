@@ -1,37 +1,45 @@
 import React from "react";
-import { ProjectSchema } from "../pages/Projects";
 import { IconButton } from '@mui/material';
 import GitHubIcon from '@mui/icons-material/GitHub';
-import PublicIcon from '@mui/icons-material/Public';
+import { ProjectSchema } from "../context/ProjectContext";
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
+import { Button, CardActionArea, CardActions } from '@mui/material';
 
 function ProjectContainer(props: ProjectSchema) {
   return (
     <>
-      <div className="flex flex-col rounded-md bg-gray-800 px-[5%] pb-[5%] ">
-        <div>
-          <div className="pt-[5%] pb-[2%] text-center text-xl">
-            {props.name}
-          </div>
-          <div className="flex justify-center gap-x-3">
-            {props.languages.map((language: any) => {
-              return <img className="w-[12%] pb-4" key={language.name} src={language.logo} />
-            })}
-          </div>
-          <div>
-            <img className="w-full drop-shadow-2xl" src={props.image}/>
-          </div>
-          <div className="text-center py-3">
-            Description are in progress :)
-          </div>
-        </div>
-        <div className="flex grow items-end justify-center">
-          <IconButton sx={{ color: "#D3D0CB" }} onClick={() => { 
-            const win = window.open(props.link, '_blank');
+      <Card style={{backgroundColor: "#f7f7f7"}}>
+        <CardActionArea>
+          <CardMedia
+            component="img"
+            height="140"
+            image={props.image}
+          />
+          <CardContent>
+            <div className="font-bold text-xl pb-2">
+              {props.name}
+            </div>
+            <div className="flex gap-x-3">
+              {props.languages.map((language: any) => {
+                return <img className="w-[10%] pb-4" key={language.name} src={language.logo} />
+              })}
+            </div>
+            <div className="font-light text-base">
+              Descriptions are in progress :)
+            </div>
+          </CardContent>
+        </CardActionArea>
+        <CardActions>
+          <IconButton sx={{ color: "#545454" }} onClick={() => {
+            window.open(props.link, '_blank');
           }}>
-            <GitHubIcon/>
+            <GitHubIcon />
           </IconButton>
-        </div>
-      </div>
+        </CardActions>
+      </Card>
     </>
   );
 }

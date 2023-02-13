@@ -6,6 +6,6 @@ const projectSchema = new mongoose.Schema({
     image: String,
     link: String,
     languages: Array
-})
+});
 
 module.exports = mongoose.model('projects', projectSchema, 'projects');
