@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import Projects from './pages/Projects';
 import Contact from './pages/Contact';
 import { ProjectContextProvider } from './context/ProjectContext';
+import { NavBarContextProvider } from './context/NavbarContext';
 import NavBar from './components/NavBar';
 import { AnimatePresence } from "framer-motion";
 
@@ -34,16 +35,18 @@ function App() {
             #f0f0f0 92.8%, #f0f0f0 100%)`,
         }}
       >
-        <ProjectContextProvider>
-          <NavBar />
-          <AnimatePresence mode="wait">
-            <Routes key={location.pathname} location={location}>
-              <Route path="/" element={<Home />} />
-              <Route path="/projects" element={<Projects />} />
-              <Route path="/contact" element={<Contact />} />
-            </Routes>
-          </AnimatePresence>
-        </ProjectContextProvider>
+        <NavBarContextProvider>
+          <ProjectContextProvider>
+            <NavBar />  
+            <AnimatePresence mode="wait">
+              <Routes key={location.pathname} location={location}>
+                <Route path="/" element={<Home />} />
+                <Route path="/projects" element={<Projects />} />
+                <Route path="/contact" element={<Contact />} />
+              </Routes>
+            </AnimatePresence>
+          </ProjectContextProvider>
+        </NavBarContextProvider>
       </div>
     </>
   )

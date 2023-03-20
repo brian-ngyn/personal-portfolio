@@ -13,8 +13,8 @@ function Home() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.5 }}
+        exit={{ opacity: 0.5 }}
+        transition={{ delay: 0.1, duration: 0.4 }}
       >
         <div className="flex justify-center pt-[10%] px-3 overflow-hidden">
           <div className="grid gap-4 grid-cols-1">
@@ -28,8 +28,6 @@ function Home() {
               <Typewriter
                 words={[`'$_software-engineer'`,
                   `'$_full-stack-developer'`,
-                  `'$_embedded-programmer'`,
-                  `'$_data-scientist'`,
                   `'$_curious'`,
                   `'$_driven'`,
                   `'$_passionate'`].sort((a, b) => 0.5 - Math.random())}

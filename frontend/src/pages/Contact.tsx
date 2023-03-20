@@ -1,15 +1,6 @@
 import React from 'react'
-import { Button, createTheme, ThemeProvider, Typography } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import { motion } from 'framer-motion';
-
-const buttonTheme = createTheme({
-  palette: {
-    primary: {
-      main: '#545454'
-    }
-  },
-});
 
 function Contact() {
   return (
@@ -18,7 +9,7 @@ function Contact() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        transition={{ duration: 0.5 }}
+        transition={{ delay: 0.1, duration: 0.4 }}
       >
         <div className="flex justify-center pt-[10%] px-3">
           <div className="grid gap-4 grid-cols-1">
@@ -30,13 +21,19 @@ function Contact() {
               Whether you have a question or just want to say hi, I’ll try my best to get back to you!
             </div>
             <div>
-              <ThemeProvider theme={buttonTheme}>
-                <Button variant="outlined" size="medium" rel="noopener noreferrer" href={`mailto:brian@bnguyen.ca`} endIcon={<SendIcon />}>
-                  <Typography variant="button">
-                    Contact me
-                  </Typography>
-                </Button>
-              </ThemeProvider>
+              <button
+                className="text-[#121212] flex items-center justify-center gap-2 rounded-xl border-4 border-black bg-[#f7f7f7] px-8 py-4 font-bold shadow-[4px_4px_0_0_#000] transition hover:shadow-none focus:outline-none focus:ring"
+                onClick={() => window.location.href = 'mailto:brian@bnguyen.ca'}
+              >
+                <div className="flex flex-row space-x-3">
+                  <div>
+                    Contact Me
+                  </div>
+                  <div>
+                    <SendIcon />
+                  </div>
+                </div>
+              </button>
             </div>
           </div>
         </div>

@@ -18,22 +18,22 @@ type ProjectContextType = {
   getProjects: () => void;
 }
 
-const projectContext = createContext<Partial<ProjectContextType>>({});
+const projectContext = createContext<ProjectContextType>({} as ProjectContextType);
 
 export function ProjectContextProvider({ children }: Props) {
   const [projectList, setProjectList] = useState<ProjectSchema[]>([]);
 
   function getProjects() {
-    axios.get(import.meta.env.VITE_AWS_LAMBDA_API + "/api/get-all").then((response) => {
-      setProjectList(response.data);
-    });
+    if (import.meta.env.DEV) {
+      axios.get("http://localhost:3001/api/get-all").then((response) => {
+        setProjectList(response.data);
+      });
+    } else {
+      axios.get(import.meta.env.VITE_AWS_LAMBDA_API + "/api/get-all").then((response) => {
+        setProjectList(response.data);
+      });
+    }
   };
-
-  // function getProjects() {
-  //   axios.get("http://localhost:3001/api/get-all").then((response) => {
-  //     setProjectList(response.data);
-  //   });
-  // };
 
   useEffect(() => {
     getProjects();
@@ -46,6 +46,6 @@ export function ProjectContextProvider({ children }: Props) {
   )
 }
 
-export function useProjectContext() {
+export function useProjectContext(): ProjectContextType {
   return useContext(projectContext);
 }
