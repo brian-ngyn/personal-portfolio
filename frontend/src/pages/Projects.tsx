@@ -1,6 +1,5 @@
 import React, { Component, useEffect, useState } from 'react'
 import ProjectContainer from '../components/ProjectContainer';
-import axios from 'axios';
 import { useProjectContext } from '../context/ProjectContext';
 import { ProjectSchema } from '../context/ProjectContext';
 import { motion } from 'framer-motion';
